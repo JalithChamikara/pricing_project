@@ -1,0 +1,5 @@
+,RMSE,MAE,MAPE_%
+Linear Regression,5.68,4.52,7.14
+XGBoost,6.43,5.19,8.08
+Random Forest,6.8,5.32,8.23
+Naive (7 days ago),10.77,8.2,12.94

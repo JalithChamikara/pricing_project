@@ -1,0 +1,28 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"robocopy . 'C:\\dev\\pricing_project\\frontend' /XF package.json /XD node_modules .next /E /XO /NFL /NDL /NJH /NJS | Out-Null; Set-Location 'C:\\dev\\pricing_project\\frontend'; npm run dev\"",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"robocopy . 'C:\\dev\\pricing_project\\frontend' /XF package.json /XD node_modules .next /E /XO /NFL /NDL /NJH /NJS | Out-Null; Set-Location 'C:\\dev\\pricing_project\\frontend'; npm run build; robocopy 'C:\\dev\\pricing_project\\frontend' . /XF package.json /XD node_modules .next /E /XO /NFL /NDL /NJH /NJS | Out-Null\"",
+    "start": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location 'C:\\dev\\pricing_project\\frontend'; npm run start\""
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.48.1",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "recharts": "^2.15.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

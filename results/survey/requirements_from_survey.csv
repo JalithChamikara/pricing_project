@@ -1,0 +1,7 @@
+Requirement,Survey evidence,How the system answers it
+Show the data used for each price,87.3% said this builds trust,"Show real values (arrivals, season, last week) next to the normal values"
+Explain why each price was suggested,75.5% said this builds trust,"SHAP-based ""Why this price?"" screen"
+Let the owner change the price,28.2% asked for this,Owner can accept or change each suggested price (future work if not built)
+Built-in guide / tutorial,40.0% asked for this,"Short ""How it works"" guide"
+Use season and competitor prices,85.5% use season; 71.8% use competitor prices,Demand forecast from SLTDA data + competitor prices
+Sinhala / Tamil and mobile friendly,Raised in open answers (D2),"Three languages, mobile-first design"

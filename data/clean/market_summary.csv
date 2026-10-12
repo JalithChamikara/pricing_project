@@ -1,0 +1,28 @@
+district,property_type,count,median_lkr,p25_lkr,p75_lkr
+Badulla,boutique,3,60931.0,53320.0,64548.0
+Badulla,guesthouse,3,23117.0,14530.0,26420.0
+Badulla,homestay,2,27036.0,26397.0,27674.0
+Badulla,hotel,10,18824.0,15051.0,30605.0
+Badulla,villa,1,10898.0,10898.0,10898.0
+Colombo,boutique,1,30911.0,30911.0,30911.0
+Colombo,guesthouse,3,10528.0,6915.0,12530.0
+Colombo,homestay,2,16348.0,13293.0,19402.0
+Colombo,hotel,8,14484.0,10502.0,18812.0
+Colombo,villa,5,11889.0,8983.0,16512.0
+Galle,boutique,1,32249.0,32249.0,32249.0
+Galle,guesthouse,14,11086.0,8200.0,17948.0
+Galle,homestay,2,15554.0,12082.0,19027.0
+Galle,hotel,20,26878.0,15834.0,31951.0
+Galle,villa,6,16935.0,12846.0,19538.0
+Kandy,guesthouse,6,6076.0,5490.0,7332.0
+Kandy,homestay,2,10072.0,9825.0,10320.0
+Kandy,hotel,7,8256.0,4788.0,10733.0
+Kandy,villa,5,9907.0,4623.0,13870.0
+Matara,boutique,3,14267.0,11592.0,30360.0
+Matara,guesthouse,1,11559.0,11559.0,11559.0
+Matara,hotel,13,16512.0,13474.0,25264.0
+Matara,villa,2,17338.0,16925.0,17751.0
+Nuwara Eliya,guesthouse,6,6605.0,4706.0,9494.0
+Nuwara Eliya,homestay,2,15687.0,13623.0,17751.0
+Nuwara Eliya,hotel,9,9363.0,5350.0,15439.0
+Nuwara Eliya,villa,3,9907.0,7480.0,36720.0

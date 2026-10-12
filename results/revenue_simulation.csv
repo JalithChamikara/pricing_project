@@ -1,0 +1,16 @@
+elasticity_e,strategy,avg_RevPAR_LKR,change_vs_fixed_%
+0.5,Fixed price (base rate),5349,0.0
+0.5,Copy competitor,6600,23.4
+0.5,AI price,6006,12.3
+0.8,Fixed price (base rate),5349,0.0
+0.8,Copy competitor,5810,8.6
+0.8,AI price,5597,4.6
+1.0,Fixed price (base rate),5349,0.0
+1.0,Copy competitor,5349,0.0
+1.0,AI price,5349,0.0
+1.2,Fixed price (base rate),5349,0.0
+1.2,Copy competitor,4933,-7.8
+1.2,AI price,5118,-4.3
+1.5,Fixed price (base rate),5349,0.0
+1.5,Copy competitor,4383,-18.1
+1.5,AI price,4802,-10.2

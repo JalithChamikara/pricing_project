@@ -1,0 +1,56 @@
+{
+  "info": {
+    "name": "AI Pricing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "base_url", "value": "http://127.0.0.1:8000" }],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{base_url}}/health" }
+    },
+    {
+      "name": "Options",
+      "request": { "method": "GET", "url": "{{base_url}}/options" }
+    },
+    {
+      "name": "Market reference",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/market-reference?district=Galle&property_type=guesthouse",
+          "host": ["{{base_url}}"],
+          "path": ["market-reference"],
+          "query": [
+            { "key": "district", "value": "Galle" },
+            { "key": "property_type", "value": "guesthouse" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Forecast",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{base_url}}/forecast",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"start_date\": \"2026-12-20\",\n  \"end_date\": \"2026-12-26\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Recommend price",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{base_url}}/recommend",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"district\": \"Galle\",\n  \"property_type\": \"guesthouse\",\n  \"base_rate\": 12000,\n  \"start_date\": \"2026-12-20\",\n  \"end_date\": \"2026-12-26\",\n  \"arrivals_change_pct\": 0,\n  \"demand_surge\": false\n}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+id,check,by hand / expected,library / system,difference,result
+V1,Linear Regression RMSE,5.6751,5.6751,0.0,Pass
+V1,Linear Regression MAE,4.518,4.518,0.0,Pass
+V1,Linear Regression MAPE,7.1415,7.1415,0.0,Pass
+V1,XGBoost RMSE,6.4313,6.4313,0.0,Pass
+V1,XGBoost MAE,5.1863,5.1863,0.0,Pass
+V1,XGBoost MAPE,8.0833,8.0833,0.0,Pass
+V2,"Normal day, price = market",8000.0,8000.0,0.0,Pass
+V2,High demand,14300.0,14300.0,0.0,Pass
+V2,Very low demand (floor applies),10800.0,10800.0,0.0,Pass
+V2,Very high market price (ceiling applies),16000.0,16000.0,0.0,Pass
+V2,Rounding to 50,9900.0,9900.0,0.0,Pass
+V2,Demand above market,16850.0,16850.0,0.0,Pass
+V3,SHAP additivity (max error over test days),65.2004,65.2004,4.57763671875e-05,Pass
+V4,Typical-day effect + reasons = demand effect (max error in LKR),0.0,0.0031129999551922083,0.00311279296875,Pass
+V5,Revenue simulation (15 values recalculated),15.0,15.0,0.0,Pass
+V5,At e = 1 all strategies equal base rate x occupancy,5349.0,5349.0,0.0,Pass

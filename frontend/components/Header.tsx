@@ -20,16 +20,16 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-black/[0.05] bg-white/80 backdrop-blur-xl transition-all">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-3.5 py-2.5 sm:px-6 sm:py-3">
         {/* Brand App Icon & Name */}
         <Link
           href={user ? "/dashboard" : "/login"}
-          className="group flex items-center gap-3 focus:outline-none"
+          className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none min-w-0"
         >
           {/* Apple-style squircle app icon */}
-          <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 text-white shadow-[0_3px_10px_rgba(5,150,105,0.28)] transition-transform duration-200 group-hover:scale-105 active:scale-95">
+          <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 text-white shadow-[0_3px_10px_rgba(5,150,105,0.28)] transition-transform duration-200 group-hover:scale-105 active:scale-95">
             <svg
-              className="h-6 w-6 transition-transform group-hover:rotate-6"
+              className="h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:rotate-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -45,11 +45,11 @@ export default function Header() {
             <div className="absolute inset-0 rounded-2xl border border-white/20 pointer-events-none" />
           </div>
 
-          <div>
-            <span className="block text-lg font-bold tracking-tight text-ink sm:text-xl">
+          <div className="min-w-0">
+            <span className="block text-base sm:text-xl font-bold tracking-tight text-ink whitespace-nowrap">
               {t("common.appName")}
             </span>
-            <span className="block text-[11px] font-medium text-muted -mt-0.5">
+            <span className="hidden sm:block text-[11px] font-medium text-muted -mt-0.5 truncate">
               {t("common.appTagline")}
             </span>
           </div>
@@ -80,10 +80,10 @@ export default function Header() {
           </nav>
         )}
 
-        {/* Right side: Apple Segmented Language Switcher + User Actions */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* iOS Segmented Pill Control for Languages */}
-          <div className="inline-flex items-center rounded-full bg-black/[0.04] p-1 border border-black/[0.04]">
+        {/* Right side: Language Switcher + User Actions */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* iOS Segmented Pill Control for Languages (Desktop, or mobile when logged out) */}
+          <div className={`items-center rounded-full bg-black/[0.04] p-1 border border-black/[0.04] ${user ? "hidden md:inline-flex" : "inline-flex"}`}>
             {LANGS.map((code) => {
               const selected = lang === code;
               return (
@@ -115,13 +115,14 @@ export default function Header() {
             </button>
           )}
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle Button */}
           {user && (
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-black/[0.04] text-ink transition-transform active:scale-95 md:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-black/[0.04] text-ink transition-transform active:scale-90 md:hidden"
               aria-label={t("header.mainMenu")}
+              aria-expanded={mobileMenuOpen}
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
@@ -137,7 +138,7 @@ export default function Header() {
 
       {/* Mobile Drawer Dropdown */}
       {user && mobileMenuOpen && (
-        <div className="border-t border-black/[0.05] bg-white/95 px-4 py-3 backdrop-blur-xl md:hidden animate-apple-in">
+        <div className="border-t border-black/[0.05] bg-white/95 px-4 py-4 backdrop-blur-2xl md:hidden animate-apple-in shadow-xl">
           <nav className="flex flex-col gap-1.5">
             {navLinks.map((link) => {
               const active = pathname.startsWith(link.href);
@@ -146,7 +147,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`rounded-2xl px-4 py-3 text-[17px] font-semibold transition-colors ${
+                  className={`rounded-2xl px-4 py-3 text-base font-semibold transition-colors ${
                     active ? "bg-brand-50 text-brand-700 font-bold" : "text-ink hover:bg-black/[0.02]"
                   }`}
                 >
@@ -154,17 +155,46 @@ export default function Header() {
                 </Link>
               );
             })}
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                signOut();
-              }}
-              className="mt-2 text-left rounded-2xl border border-red-200/80 bg-red-50/50 px-4 py-3 text-[17px] font-semibold text-rose-700 active:scale-98"
-            >
-              {t("header.logout")}
-            </button>
           </nav>
+
+          {/* Mobile Language Selector inside drawer */}
+          <div className="mt-4 pt-3 border-t border-black/[0.06]">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-muted mb-2 px-1">
+              {t("header.language")}
+            </p>
+            <div className="flex w-full rounded-2xl bg-black/[0.04] p-1 border border-black/[0.04]">
+              {LANGS.map((code) => {
+                const selected = lang === code;
+                return (
+                  <button
+                    key={code}
+                    type="button"
+                    onClick={() => setLang(code as Lang)}
+                    aria-pressed={selected}
+                    className={`flex-1 rounded-xl py-2 text-xs sm:text-sm font-semibold transition-all duration-200 text-center select-none ${
+                      selected
+                        ? "bg-white text-ink shadow-[0_2px_8px_rgba(0,0,0,0.08)] font-bold scale-[1.01]"
+                        : "text-muted hover:text-ink"
+                    }`}
+                  >
+                    {LANG_LABELS[code]}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Mobile Logout Button */}
+          <button
+            type="button"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              signOut();
+            }}
+            className="mt-4 w-full text-center rounded-2xl border border-red-200/80 bg-red-50/60 px-4 py-3 text-sm font-bold text-rose-700 active:scale-98 transition-transform"
+          >
+            {t("header.logout")}
+          </button>
         </div>
       )}
     </header>

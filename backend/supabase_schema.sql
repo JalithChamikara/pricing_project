@@ -6,10 +6,14 @@ create table if not exists public.properties (
   name text not null,
   district text not null,
   property_type text not null,
-  rooms integer,
+  rooms integer not null,
+  amenities text[] default '{}'::text[],
   base_rate numeric not null check (base_rate > 0),
   created_at timestamptz not null default now()
 );
+
+-- Safe migration for existing databases (adds amenities without deleting or altering existing records):
+alter table public.properties add column if not exists amenities text[] default '{}'::text[];
 
 create table if not exists public.price_recommendations (
   id uuid primary key default gen_random_uuid(),

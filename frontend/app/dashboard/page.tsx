@@ -247,6 +247,14 @@ export default function DashboardPage() {
                         {t("common.rooms", { count: selectedProperty.rooms })}
                       </span>
                     )}
+                    {selectedProperty.amenities && selectedProperty.amenities.length > 0 && (
+                      <span
+                        className="rounded-full bg-brand-500/10 px-3 py-1 text-brand-800 border border-brand-500/20"
+                        title={selectedProperty.amenities.join(", ")}
+                      >
+                        ✓ {t("property.amenitiesCount", { count: selectedProperty.amenities.length })}
+                      </span>
+                    )}
                     <span className="rounded-full bg-brand-500/10 px-3 py-1 text-brand-800 border border-brand-500/20">
                       {t("property.usualPrice")}: {formatLKR(selectedProperty.base_rate)}
                     </span>
